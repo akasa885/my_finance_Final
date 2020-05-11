@@ -38,6 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:paddingTop="15dp"
+                    android:paddingEnd="8dp"
                     android:gravity="right"
                     android:text="Version 1.0.0" />
             </LinearLayout>
