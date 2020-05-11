@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/setelanFragment"
+        android:icon="@drawable/ic_build_black_24dp"
+        android:title="Setting" />
+    <item
+        android:id="@+id/tentangFragment"
+        android:icon="@drawable/ic_subject_black_24dp"
+        android:title="About" />
+</menu>
