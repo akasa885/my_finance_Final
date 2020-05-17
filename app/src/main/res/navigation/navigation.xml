@@ -15,6 +15,8 @@
             app:destination="@id/settingFrag"/>
         <action android:id="@+id/action_homeFragment_to_about"
             app:destination="@id/aboFrag"/>
+        <action android:id="@+id/action_homeFragment_to_Login"
+            app:destination="@id/loginAtention"/>
     </fragment>
     <fragment
         android:id="@+id/settingFrag"
@@ -27,5 +29,12 @@
         android:name="android.latihan.my_finance.aboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about">
+    </fragment>
+    <fragment
+        android:id="@+id/loginAtention"
+        android:label="Account"
+        android:name="android.latihan.my_finance.loginFragment"
+        tools:layout="@layout/fragment_account_sign">
+
     </fragment>
 </navigation>
