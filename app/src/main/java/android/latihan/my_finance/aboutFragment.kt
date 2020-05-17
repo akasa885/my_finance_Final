@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 class aboutFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentAboutBinding>(inflater, R.layout.fragment_about,container,false)
+        (activity as MainActivity?)!!.closeOurDrawer()
         return binding.root
     }
 }
