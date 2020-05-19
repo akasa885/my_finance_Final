@@ -2,16 +2,14 @@ package android.latihan.my_finance
 
 import android.latihan.my_finance.databinding.ActivityMainBinding
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.customview.widget.ViewDragHelper
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.drawerlayout.widget.DrawerLayout.*
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
@@ -25,14 +23,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         drawerLayout = binding.drawerLayout
         var viewingNav : NavigationView = binding.navView
+        var headView = viewingNav.getHeaderView(0)
+        var header = headView.findViewById<ConstraintLayout>(R.id.navHeader)
         //menangkap control input item dari navBar
-//        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+        //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+        header.setOnClickListener {
+            Toast.makeText(this, "Header Login Clicked", Toast.LENGTH_SHORT).show()
+            loginCallend()
+        }
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
         //penangkapan ditaruh setelah setup controller apabila sebelumnya tidak tertangkap
         viewingNav.setNavigationItemSelectedListener(this)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
         return NavigationUI.navigateUp(navController, drawerLayout)
@@ -50,7 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show()
             }
         }
-        drawerLayout.closeDrawer(GravityCompat.START)
+        closeOurDrawer()
 //        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         return true
     }
@@ -62,6 +67,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
+
+    fun loginCallend(){
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        navController.navigate(R.id.action_homeFragment_to_Login)
+        closeOurDrawer()
+    }
+
     fun closeOurDrawer(){
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }

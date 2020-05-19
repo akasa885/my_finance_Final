@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Finance</string>
+    <string name="tab_text_1">Transaksi</string>
+    <string name="tab_text_2">Laporan</string>
+    <string name="tab_text_3">Web</string>
 </resources>
