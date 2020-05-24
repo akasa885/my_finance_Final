@@ -6,4 +6,8 @@
     <color name="viewCard">#59abff</color>
     <color name="blueButton">#3f888f</color>
     <color name="grayPrimary">#d7d7d7</color>
+    <color name="textColorNav">#636E72</color>
+    <color name="textColorActionBar">#F0F0F0</color>
+    <color name="textIncome">#57a639</color>
+    <color name="textOutcome">#b32821</color>
 </resources>

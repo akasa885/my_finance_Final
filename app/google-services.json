@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "784222142607",
+    "firebase_url": "https://myfinance-gr35.firebaseio.com",
+    "project_id": "myfinance-gr35",
+    "storage_bucket": "myfinance-gr35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784222142607:android:ace4e22f57ec5ea9c370fa",
+        "android_client_info": {
+          "package_name": "android.latihan.my_finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784222142607-gdfoq7qh3scs0pcvo2b2ijgo5h1j3soo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.latihan.my_finance",
+            "certificate_hash": "f7f03bd202af28f3b997f6c045e14c8e25c26a56"
+          }
+        },
+        {
+          "client_id": "784222142607-qsaf4lafniqd6mm1uu7hfqjcjptbmt77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPygAx9558dKkxBgrFB6HmkDEFxt6HK9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784222142607-qsaf4lafniqd6mm1uu7hfqjcjptbmt77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

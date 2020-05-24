@@ -7,7 +7,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="android.latihan.my_finance.homeFragment"
+        android:name="android.latihan.my_finance.view.homeFragment"
         android:label="My Finance"
         tools:layout="@layout/fragment_home">
         <action
@@ -20,20 +20,20 @@
     </fragment>
     <fragment
         android:id="@+id/settingFrag"
-        android:name="android.latihan.my_finance.settingFragment"
+        android:name="android.latihan.my_finance.view.settingFragment"
         android:label="Setting"
         tools:layout="@layout/fragment_setting">
     </fragment>
     <fragment
         android:id="@+id/aboFrag"
-        android:name="android.latihan.my_finance.aboutFragment"
+        android:name="android.latihan.my_finance.view.aboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about">
     </fragment>
     <fragment
         android:id="@+id/loginAtention"
         android:label="Account"
-        android:name="android.latihan.my_finance.loginFragment"
+        android:name="android.latihan.my_finance.view.loginFragment"
         tools:layout="@layout/fragment_account_sign">
 
     </fragment>

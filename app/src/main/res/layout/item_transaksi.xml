@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemPack"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="4dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/descContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/viewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ruda"
+            android:gravity="left"
+            tools:text="Cicilan Rumah"
+            android:textColor="@color/textColorNav" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/amountContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/viewTransac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ruda"
+            android:gravity="right"
+            android:textColor="@color/textColorNav"
+            tools:text="Rp. 1000.000.000" />
+    </LinearLayout>
+
+</LinearLayout>

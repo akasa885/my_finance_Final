@@ -1,9 +1,9 @@
-package android.latihan.my_finance
+package android.latihan.my_finance.controller
 
+import android.latihan.my_finance.R
 import android.latihan.my_finance.databinding.ActivityMainBinding
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //binding untuk mendapat tampilan dari main activity
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        )
         drawerLayout = binding.drawerLayout
         var viewingNav : NavigationView = binding.navView
         var headView = viewingNav.getHeaderView(0)
