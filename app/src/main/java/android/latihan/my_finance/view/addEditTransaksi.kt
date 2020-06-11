@@ -1,6 +1,8 @@
 package android.latihan.my_finance.view
 
+import android.content.Intent
 import android.latihan.my_finance.R
+import android.latihan.my_finance.controller.BaseActivity
 import android.latihan.my_finance.model.Category
 import android.latihan.my_finance.model.TransaksiData
 import android.os.Bundle
@@ -144,13 +146,18 @@ class addEditTransaksi : AppCompatActivity() {
                 //do nothing
             }
         }
-        var amountNumber : String = amountInsert.text.toString()
+        var amountNumber = amountInsert.text.toString()
         saveButton.setOnClickListener {
-            newTransaksi(selectSpinType, selectSpinCat, titleInsert.text.toString(), amountNumber.toInt())
+            newTransaksi(selectSpinType, selectSpinCat, titleInsert.text.toString(), amountNumber)
+            Toast.makeText(
+                baseContext, "Add Transaksi Sukses",
+                Toast.LENGTH_SHORT
+            ).show()
+            startActivity(Intent(this,BaseActivity::class.java))
         }
     }
 
-    private fun newTransaksi (type: String?, category: String?, title: String?, amount: Number?){
+    private fun newTransaksi (type: String?, category: String?, title: String?, amount: String?){
         mTransdatabase = FirebaseDatabase.getInstance().getReference(currentUser!!.uid).child("Transaksi")
         val key = mTransdatabase.push().key
 
@@ -158,7 +165,7 @@ class addEditTransaksi : AppCompatActivity() {
             Log.w(TAG, "Couldn't get push key for category")
             return
         }
-        val post = TransaksiData(type, category,amount , title)
+        val post = TransaksiData(type, category, amount , title)
         mCatdatabase.child(key).setValue(post)
     }
 

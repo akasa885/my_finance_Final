@@ -7,7 +7,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class TransaksiData (
     var Ttype : String? = null,
     var Tcat : String? = null,
-    var Tamount : Number? = 0,
+    var Tamount : String? = null,
     var Ttitle : String? = null
 ) {
     @Exclude
