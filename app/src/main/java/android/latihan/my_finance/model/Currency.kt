@@ -1,7 +1,9 @@
 package android.latihan.my_finance.model
 
 import com.google.firebase.database.Exclude
+import com.google.firebase.database.IgnoreExtraProperties
 
+@IgnoreExtraProperties
 data class Currency(
     var curTag : String? = null,
     var curCountry : String? = null,

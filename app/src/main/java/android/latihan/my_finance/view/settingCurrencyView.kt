@@ -4,11 +4,13 @@ import android.app.Activity
 import android.latihan.my_finance.R
 import android.latihan.my_finance.controller.rv_CatCurrency
 import android.latihan.my_finance.model.Currency
+import android.latihan.my_finance.model.commuViewModel
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,6 +25,7 @@ class settingCurrencyView : AppCompatActivity() {
     private var firebaseAuth: FirebaseAuth
     private var currentUser: FirebaseUser?
     private var CurList = ArrayList<Currency>()
+    private var communicationViewModel: commuViewModel? = null
 
     companion object{
         private const val TAG = "CurrencyPart"
@@ -36,6 +39,8 @@ class settingCurrencyView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_currency_view)
+        //transfer data between activiry using lifecycle
+        communicationViewModel = ViewModelProviders.of(this).get(commuViewModel::class.java)
         val mManager = LinearLayoutManager(this)
         mManager.reverseLayout = true
         mManager.stackFromEnd = true
@@ -75,7 +80,7 @@ class settingCurrencyView : AppCompatActivity() {
                     Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
                     // [START_EXCLUDE]
                     Toast.makeText(
-                        baseContext, "Failed to load post.",
+                        baseContext, "Failed to load currency.",
                         Toast.LENGTH_SHORT
                     ).show()
                     // [END_EXCLUDE]
@@ -130,11 +135,14 @@ class settingCurrencyView : AppCompatActivity() {
         if(currentUser != null){
             for(cast in CurList){
                 if(cast.curId == curItem.curId){
+                    //set the selected currency
                     copyToUser(cast.curId,cast.curTag,cast.curCountry,1)
                 }else{
+                    //set the other currency
                     copyToUser(cast.curId,cast.curTag,cast.curCountry,0)
                 }
             }
+            communicationViewModel!!.setCur(curItem.curTag!!)
             setResult(Activity.RESULT_OK)
             finish()
         }else{

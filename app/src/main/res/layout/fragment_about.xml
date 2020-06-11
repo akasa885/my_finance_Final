@@ -115,7 +115,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/ruda_bold"
                         android:gravity="center"
-                        android:text="M. Gamal Qolbin"
+                        android:text="M. Gamal Kolbin"
                         android:textColor="@color/textColorNav" />
 
                 </LinearLayout>

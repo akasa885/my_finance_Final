@@ -2,22 +2,28 @@ package android.latihan.my_finance.view
 
 import android.latihan.my_finance.R
 import android.latihan.my_finance.model.Category
+import android.latihan.my_finance.model.TransaksiData
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class addEditTransaksi : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class addEditTransaksi : AppCompatActivity() {
     private lateinit var mCatdatabase: DatabaseReference
-    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var mTransdatabase: DatabaseReference
+    private var firebaseAuth: FirebaseAuth
     private var currentUser: FirebaseUser?
+    private var calendar : Calendar
+    private var dateForm : SimpleDateFormat? = null
+    private var date : String = ""
     var arrayList: ArrayList<String> = ArrayList()
 
     companion object{
@@ -25,27 +31,24 @@ class addEditTransaksi : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
 
     init{
+        calendar = Calendar.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
         currentUser = firebaseAuth.currentUser
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item_transaksi)
+        val dateText = findViewById<TextView>(R.id.dateTextPrintt)
+        val saveButton : Button = findViewById(R.id.buttonAddTransacSave)
+        val titleInsert = findViewById<TextInputEditText>(R.id.inside_title_input)
+        val amountInsert = findViewById<TextInputEditText>(R.id.inside_amount_input)
+        dateForm = SimpleDateFormat("dd/MMM/yyyy")
+        date = dateForm!!.format(calendar.getTime())
+        dateText.text = date
 
-        // Dummy spinner date
-        val spinnerDate: Spinner = findViewById(R.id.spinnerAddDate)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.Date,
-            android.R.layout.simple_spinner_dropdown_item
-        ).also {adapter->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerDate.adapter = adapter
-        }
 
-        // Dummy spinner type
+        // spinner type
         val spinnerType: Spinner = findViewById(R.id.spinnerAddType)
         ArrayAdapter.createFromResource(
             this,
@@ -56,13 +59,16 @@ class addEditTransaksi : AppCompatActivity(), AdapterView.OnItemSelectedListener
             spinnerType.adapter = adapter
         }
 
-        // Dummy spinner category
+        // spinner category
         val spinnerCategory: Spinner = findViewById(R.id.spinnerAddCateg)
-        var selectSpin : String =""
+        var selectSpinType : String = ""
+        var selectSpinCat : String = ""
         if(currentUser != null){
             mCatdatabase = FirebaseDatabase.getInstance().getReference(currentUser!!.uid).child("Category")
+            //spinner type on change listener
             spinnerType.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, p3: Long) {
+                    selectSpinType = parent?.getItemAtPosition(pos).toString()
                     if(pos == 0){
                         arrayList.clear()
                         val IncomeQuery: Query = mCatdatabase.orderByChild("ctype").equalTo("Income")
@@ -92,6 +98,7 @@ class addEditTransaksi : AppCompatActivity(), AdapterView.OnItemSelectedListener
                                 // [END_EXCLUDE]
                             }
                         })
+
                     }else{
                         arrayList.clear()
                         val IncomeQuery: Query = mCatdatabase.orderByChild("ctype").equalTo("Outcome")
@@ -124,16 +131,35 @@ class addEditTransaksi : AppCompatActivity(), AdapterView.OnItemSelectedListener
                     }
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                    //do nothing
                 }
             }
         }
+        spinnerCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectSpinCat = parent?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                //do nothing
+            }
+        }
+        var amountNumber : String = amountInsert.text.toString()
+        saveButton.setOnClickListener {
+            newTransaksi(selectSpinType, selectSpinCat, titleInsert.text.toString(), amountNumber.toInt())
+        }
     }
 
-    override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-    }
+    private fun newTransaksi (type: String?, category: String?, title: String?, amount: Number?){
+        mTransdatabase = FirebaseDatabase.getInstance().getReference(currentUser!!.uid).child("Transaksi")
+        val key = mTransdatabase.push().key
 
-    override fun onNothingSelected(parent: AdapterView<*>) {
+        if (key == null){
+            Log.w(TAG, "Couldn't get push key for category")
+            return
+        }
+        val post = TransaksiData(type, category,amount , title)
+        mCatdatabase.child(key).setValue(post)
     }
 
 }
