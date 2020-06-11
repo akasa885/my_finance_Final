@@ -6,6 +6,7 @@ package android.latihan.my_finance.view
 
 import android.latihan.my_finance.controller.MainActivity
 import android.latihan.my_finance.R
+import android.latihan.my_finance.controller.BaseActivity
 import android.latihan.my_finance.databinding.FragmentHomeBinding
 import android.latihan.my_finance.controller.pagerAdapter
 import android.os.Bundle
@@ -21,7 +22,7 @@ class homeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home,container,false)
-        (activity as MainActivity?)!!.openOurDrawer()
+        (activity as BaseActivity?)!!.openOurDrawer()
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

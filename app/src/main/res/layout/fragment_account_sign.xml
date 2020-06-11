@@ -6,70 +6,136 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
-        <LinearLayout
-            android:id="@+id/containLogin"
-            android:layout_width="280dp"
-            android:layout_height="500dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:elevation="3dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+<!--        <LinearLayout-->
+<!--            android:id="@+id/containLogin"-->
+<!--            android:layout_width="280dp"-->
+<!--            android:layout_height="500dp"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:layout_marginBottom="1dp"-->
+<!--            android:elevation="3dp"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/titleHeader"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@color/grayPrimary"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Privacy Policy"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textSize="18sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <ScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="350dp"-->
+<!--                android:layout_marginTop="10dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical" />-->
+<!--            </ScrollView>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/tombolLogin"-->
+<!--                    android:layout_width="75dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/blueButton"-->
+<!--                    android:text="Login"-->
+<!--                    android:textColor="#FFFFFF" />-->
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+        <ImageView
+            android:id="@+id/imageApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="113dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_app" />
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ruda_bold"
+            android:layout_marginTop="20dp"
+            android:text="My Finance"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/imageApp"
+            tools:layout_editor_absoluteY="233dp" />
 
-            <LinearLayout
-                android:id="@+id/titleHeader"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/grayPrimary"
-                android:orientation="horizontal">
+        <TextView
+        android:id="@+id/appGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ruda_bold"
+        android:layout_marginTop="75dp"
+        android:text="Welcome ! !"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appTitle"
+        tools:layout_editor_absoluteY="233dp" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_weight="1"
-                    android:text="Privacy Policy"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-            </LinearLayout>
+        <TextView
+            android:id="@+id/appSubGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/ruda_bold"
+            android:text="Aplikasi ini berguna untuk mencatat \n alur keuangan anda!!\n\n Silahkan login  sekali untuk memulai!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appGreeting" />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_marginTop="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <Button
-                    android:id="@+id/tombolLogin"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/blueButton"
-                    android:text="Login"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
-
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/tombolLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:background="@color/blueButton"
+            android:text="Google Authentication"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appSubGreeting" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

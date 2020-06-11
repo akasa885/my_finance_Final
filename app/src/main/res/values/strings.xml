@@ -1,6 +1,28 @@
 <resources>
     <string name="app_name">My Finance</string>
-    <string name="tab_text_1">Transaksi</string>
-    <string name="tab_text_2">Laporan</string>
-    <string name="tab_text_3">Web</string>
+    <string name="tab_text_1">Transaction</string>
+    <string name="tab_text_2">Report</string>
+    <string name="default_head_title">Account Sync For Backup</string>
+    <string name="google_email_user">User: %s</string>
+    <string name="button_text_add">Add</string>
+    <string name="category_label">Category</string>
+    <string name="currency_label">Currency</string>
+
+
+    // Dummy category
+    <string-array name="Category">
+        <item>Buy Lunch</item>
+        <item>Salary</item>
+    </string-array>
+
+    // Dummy type
+    <string-array name="Type">
+        <item>Income</item>
+        <item>Outcome</item>
+    </string-array>
+
+    // Dummy date
+    <string-array name="Date">
+        <item>26 May 2020</item>
+    </string-array>
 </resources>

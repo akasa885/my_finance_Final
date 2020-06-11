@@ -1,85 +1,72 @@
 package android.latihan.my_finance.controller
 
 import android.latihan.my_finance.R
-import android.latihan.my_finance.databinding.ActivityMainBinding
+import android.latihan.my_finance.model.loginWithGoogle
+import android.latihan.my_finance.view.loginFragment
 import android.os.Bundle
-import android.view.MenuItem
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.Fragment
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
-    private lateinit var drawerLayout: DrawerLayout
+class MainActivity : AppCompatActivity(), NavigationHost{
+    companion object{
+        const val SIGNOUT_REQUEST = "1"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //binding untuk mendapat tampilan dari main activity
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
-            R.layout.activity_main
-        )
-        drawerLayout = binding.drawerLayout
-        var viewingNav : NavigationView = binding.navView
-        var headView = viewingNav.getHeaderView(0)
-        var header = headView.findViewById<ConstraintLayout>(R.id.navHeader)
-        //menangkap control input item dari navBar
-        //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
-        header.setOnClickListener {
-            Toast.makeText(this, "Header Login Clicked", Toast.LENGTH_SHORT).show()
-            loginCallend()
+        setContentView(R.layout.activity_main)
+        if(intent.hasExtra(SIGNOUT_REQUEST)){
+            Toast.makeText(this, "Sign Out Successfull!", Toast.LENGTH_LONG).show()
         }
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
-        NavigationUI.setupWithNavController(binding.navView, navController)
-        //penangkapan ditaruh setelah setup controller apabila sebelumnya tidak tertangkap
-        viewingNav.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        return NavigationUI.navigateUp(navController, drawerLayout)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        when (item.itemId){
-            R.id.setelanFragment ->{
-                navController.navigate(R.id.action_homeFragment_to_setting)
-//                Toast.makeText(this, "Settingclicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.tentangFragment ->{
-                navController.navigate(R.id.action_homeFragment_to_about)
-//                Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show()
-            }
-        }
-        closeOurDrawer()
-//        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        return true
-    }
-
-    override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START)
-        }else{
-            super.onBackPressed()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container, loginFragment())
+                .commit()
         }
     }
 
-    fun loginCallend(){
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        navController.navigate(R.id.action_homeFragment_to_Login)
-        closeOurDrawer()
+    override fun navigateTo(fragment: Fragment, addToBackstack: Boolean) {
+        val transaction = supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+
+        if (addToBackstack) {
+            transaction.addToBackStack(null)
+        }
+
+        transaction.commit()
     }
 
-    fun closeOurDrawer(){
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+    override fun onStart() {
+        super.onStart()
+        Log.d(loginWithGoogle.TAG, "onStart")
     }
-    fun openOurDrawer(){
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(loginWithGoogle.TAG,"onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(loginWithGoogle.TAG,"onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(loginWithGoogle.TAG,"onstop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(loginWithGoogle.TAG,"onDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(loginWithGoogle.TAG,"onRestart")
     }
 }

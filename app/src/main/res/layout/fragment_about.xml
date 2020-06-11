@@ -3,21 +3,125 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.homeFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/aboutConstraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#F5F6FA">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Halaman About"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/label_app_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/ruda_bold"
+                android:gravity="center"
+                android:text="My Finance"
+                android:textColor="@color/textColorNav" />
+
+            <ImageView
+                android:id="@+id/imageViewLogoApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:src="@drawable/logo_app" />
+
+            <TextView
+                android:id="@+id/label_desc_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/ruda_bold"
+                android:gravity="center"
+                android:text="This is the final project of the mobile programming course. We hope that with this application, our project assignments are considered complete."
+                android:textColor="@color/textColorNav" />
+
+            <TextView
+                android:id="@+id/label_creator_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/ruda_bold"
+                android:gravity="center"
+                android:text="Created By :"
+                android:textColor="@color/textColorNav" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="30dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewRizky"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/photo_profile" />
+
+                    <TextView
+                        android:id="@+id/label_name_rizky"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/ruda_bold"
+                        android:gravity="center"
+                        android:text="Rizki Akbar"
+                        android:textColor="@color/textColorNav" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="45dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewGamal"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/photo_profile" />
+
+                    <TextView
+                        android:id="@+id/label_name_gamal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/ruda_bold"
+                        android:gravity="center"
+                        android:text="M. Gamal Qolbin"
+                        android:textColor="@color/textColorNav" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

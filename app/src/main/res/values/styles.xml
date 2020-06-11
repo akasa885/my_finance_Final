@@ -6,11 +6,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        // spinner theme
+        <item name="android:spinnerItemStyle">@style/SpinnerTheme</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
+    </style>
+
+    <!-- Login application Theme-->
+    <style name="loginAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="CategoryTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     // style font
     <style name="FontTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/ruda</item>
+        <item name="android:fontFamily">@font/ruda_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/textColorNav</item>
     </style>
@@ -26,8 +45,16 @@
 
     // part of style action bar
     <style name="AppTheme.ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:fontFamily">@font/ruda</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/ruda_bold</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/textColorActionBar</item>
+    </style>
+
+    // style spinner
+    <style name="SpinnerTheme">
+        <item name="android:fontFamily">@font/ruda</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/textColorNav</item>
     </style>
 </resources>

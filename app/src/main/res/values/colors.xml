@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#57A639</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#00b16a</color>
+    <color name="colorPrimaryDark">#00b16a</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="viewCard">#59abff</color>
     <color name="blueButton">#3f888f</color>
@@ -10,4 +10,5 @@
     <color name="textColorActionBar">#F0F0F0</color>
     <color name="textIncome">#57a639</color>
     <color name="textOutcome">#b32821</color>
+    <color name="textDifference">#262626</color>
 </resources>
